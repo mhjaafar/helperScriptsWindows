@@ -7,21 +7,23 @@ echo
 
 for x in *;
 do
-	if [ -d "${x}" ]
-	then
-		cd "${x}"
-		echo "${x}"
-		echo "======================"
-		if ! [ -e .git ]
+		if [ -d "${x}" ]
 		then
-			echo "Not a git directory."
-			cd ../
+			cd "${x}"
+			echo "${x}"
+			echo "======================"
+			if ! [ -e .git ]
+			then
+				echo "Not a git directory."
+				cd ../
+				echo
+				continue
+			fi
+
+			echo "Calling git status ..."
+			git status
 			echo
-			continue
-		fi
-		echo "Calling git status ..."
-		git status
-		echo
-		cd ../
+
+			cd ../
 		fi
 done
