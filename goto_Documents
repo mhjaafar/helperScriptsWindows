@@ -1,6 +1,0 @@
-#!/bin/bash.exe
-
-echo "Changing directory to My Documents"
-cd /c/Users/mhjaafar/Documents
-
-exec bash
