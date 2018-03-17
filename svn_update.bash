@@ -8,25 +8,15 @@ for x in *;
 do
     if [ -d "${x}" ]
     then
+        if [ -e "${x}"/.svn ]
+        then
             cd "${x}"
             echo "${x}"
             echo "======================"
-            if ! [ -e .svn ]
-            then
-                echo "Not a svn directory."
-                cd ../
-                echo
-                continue
-            fi
-
             echo "Calling svn update ..."
             svn update
-
             echo
-            echo "Calling svn status ..."
-            svn status
-          echo
-
-          cd ../
+            cd ../
+        fi
     fi
 done
